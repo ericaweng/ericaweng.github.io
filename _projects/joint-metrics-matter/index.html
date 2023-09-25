@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>8406 project webpage (supplementary material)</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://chi2024.acm.org/wp-content/uploads/2023/06/CHI-2024-Hawaii-FAVICON-v01-04-64x64.jpg" sizes="192x192" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/app.js"></script>
+    <script src="js/video_visibility.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                Evaluating a VR System for Collecting Safety-Critical<br>Vehicle-Pedestrian Interactions<br>
+                <small>
+                Submission 8406 project webpage (supplementary material) for CHI 2024
+                </small>
+            </h1>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+<!--                <div id="player"></div>-->
+<!--                <img src="img/teaser.png" width="100%">-->
+                <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/kid.mp4" type="video/mp4" />
+                </video>
+            </div>
+<!--            <div style="position:relative;padding-top:56.25%;">-->
+<!--                <iframe src="https://youtube.com/embed/r-VZueho4ZY" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>-->
+<!--            </div>-->
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Abstract
+                </h2>
+                <p class="text-justify">
+                      Autonomous vehicles (AVs) require comprehensive and reliable pedestrian trajectory data to ensure safe operation. However, obtaining data of safety-critical scenarios such as jaywalking and near-collisions like that shown in the video above, or uncommon agents such as children, disabled pedestrians, and vulnerable road users poses logistical and ethical challenges. This paper evaluates a Virtual Reality (VR) system designed to collect pedestrian trajectory and body pose data in a controlled, low-risk environment. We substantiate the usefulness of such a system through semi-structured interviews with professionals in the AV field, and validate the effectiveness of the system through two empirical studies: a first-person user evaluation involving 62 participants, and a third-person evaluative survey involving 290 respondents. Our findings demonstrate that the VR-based data collection system elicits realistic responses for capturing pedestrian data in safety-critical or uncommon vehicle-pedestrian interaction scenarios.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Part 1: Semi-Structured Interviews
+                </h2>
+                <h3>Interview Questions</h3>
+                <div class="text-left">
+                    These are the questions we asked during the interviews, grouped into categories:
+                    <h4 id="introduction">Introduction</h4>
+                    <ul>
+                        <li>What is your area of expertise, what is your research in?</li>
+                    </ul>
+
+                    <h4 id="probing-dataset-limitations">Probing dataset limitations</h4>
+                    <ul>
+                        <li>Which trajectory datasets you have worked with?</li>
+                        <li>What do you feel are the current limitations of these datasets?</li>
+                        <li>How about with respect to pedestrians?</li>
+                    </ul>
+
+                    <h4 id="establishing-need-for-out-of-distribution-ood-data">Establishing need for out-of-distribution (OOD) data</h4>
+                    <ul>
+                        <li>What kinds of scenarios are lacking in real datasets?</li>
+                        <li>What existing methods are there for improving performance in OOD settings?</li>
+                    </ul>
+
+                    <h4 id="thoughts-about-usefulness-of-vr">Thoughts about usefulness of VR</h4>
+                    <ul>
+                        <li>Have you ever used pedestrian body pose or eye gaze for pedestrian trajectory modeling? Do you think it would be useful?</li>
+                        <li>How do you think a Virtual Reality (VR) simulated environment might be able to help generate more OOD data?</li>
+                        <li>Given a Virtual Reality system in which a pedestrian walks around while wearing a VR headset in a virtual traffic environment while sensors capture their movements: what are the potential benefits and limitations of such a system?</li>
+                    </ul>
+                </div>
+
+                <h3>Interview Responses</h3>
+                We grouped interview responses about the limitations of existing datasets into three main categories.
+                <ol>
+                    <li>Lack of Interesting Vehicle-Pedestrian Interactions</li>
+                    <li>Lack of Uncommon but Important Scenarios</li>
+                    <li>Lack of Fine-grained Trajectory Features</li>
+                </ol>
+                <p>We collected some scenes from <a href="https://www.nuscenes.org/">NuScenes</a>,
+                   a popular dataset for autonomous vehicle research, that substantiates the above limitations.
+                   Click "Show" to see the example videos.</p>
+<!--                <a id="toggleButton" onclick="toggleVideoVisibility('allVideos', 'toggleButton')">Show</a>-->
+                <button id="toggleButton" onclick="toggleVideoVisibility('allVideos', 'toggleButton')">Show</button>
+
+                <div id="allVideos" style="display:none;">
+                    <p>
+                        The following videos are annotated example scene videos from NuScenes.
+                        Vehicles are labelled with orange boxes, pedestrians with blue, and cyclists with red.
+                    </p>
+                    <p>
+                        In the following scenario, there are many pedestrians. However, most of them are walking on the sidewalk alongside the road.
+                    </p>
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://youtube.com/embed/r-VZueho4ZY" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                    <br>
+                    <p>
+                        The following scenario also contains many pedestrians at a crosswalk intersection, but few out-of-distribution behaviors.
+                    </p>
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://youtube.com/embed/bipa9QBSlb4" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                    <br>
+                    <p>
+                        The following contains a sequence that is more like our target out-of-distribution pedestrian: a wheelchair user.
+                        Vulnerable road users appear few and far-between in the dataset, and are limited to the environment scenarios in which they are found.
+                        (e.g., in this one the wheelchair-user is rolling along the street; but it is also important to have
+                        data on wheelchair users in other scenarios too.)
+                    </p>
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://youtube.com/embed/X52BugmqWiU" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                    <br>
+                    <p>
+                        The following contains a few jaywalkers, and at 0:11s, a pedestrian jaywalking frantically in the middle of the road;
+                        these are more like our target out-of-distribution pedestrian. But again, they are few and far-between.
+                    </p>
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://youtube.com/embed/vY4Abc9_7Tw" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                    <br>
+                    <p>
+                        In all the above examples, bounding boxes are provided for camera data, and lidar data is also provided.
+                        Lidar data provides some information about pedestrian body pose, although the quality is not as good for far-away pedestrians.
+                        Furthermore, body pose skeleton has yet to be extracted. Perhaps most importantly,
+                        as the data is from the real-world, so there is no controllability over the scenario,
+                        and no easy way to obtain ample and diverse data in the way a simulator can.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+<br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Part 2: VR System User Study
+                </h2>
+                <div class="text-left">
+                    <p>
+                        The following are time-synced videos of the user using the VR headset in the real world and in the virtual world
+                        for each of the three scenarios we test in our user study.
+                    </p>
+                    <h4>
+                        Scenario 1: Jaywalking
+                    </h4>
+                    <video id="v2" width="100%" autoplay loop muted>
+                      <source src="img/demo_jaywalk.mp4" type="video/mp4" />
+                    </video>
+                    <h4>
+                        Scenario 2: Walking alongside cars on a narrow road
+                    </h4>
+                    <video id="v3" width="100%" autoplay loop muted>
+                      <source src="img/demo_narrow.mp4" type="video/mp4" />
+                    </video>
+                    <h4>
+                        Scenario 3: Crosswalk Intersection
+                    </h4>
+                    <video id="v4" width="100%" autoplay loop muted>
+                      <source src="img/demo_intersection.mp4" type="video/mp4" />
+                    </video>
+                    <br>
+                    <p>
+                        The following is a final example of a time-synced videos of a user using the VR headset.
+                        The left is the real-life setting in which the user is actually walking.
+                        The center shows a third person view of the user in the VR world.
+                        The avatar's body orientation represents the VR headset's orientation in the real world.
+                        The right side shows the bird's eye view 2D trajectories of the user and vehicles in the VR world.
+                    </p>
+                    <video id="v1" width="100%" autoplay loop muted>
+                      <source src="img/demo_w_traj.mp4" type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        </div>
+<br>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Part 3: 3rd Person Evaluative Survey
+                </h2>
+                <b>Errata: There is an error in Table 4 of the submission that we did not catch in time before the full paper submission deadline, in which the percentages of the first two rows of the 3rd column were accidentally switched. Below shows the correct version of Table 4, split into two tables for clarity.</b>
+                <img src="img/correction.png" width="100%">
+                <br>
+                <br>
+                <h3>Survey Instructions</h3>
+                <p class="text-justify">
+                    Please see the webpage used to administer the survey <a href="pt3_survey/index.html">here</a>.
+                    The gifs displayed for the survey are randomized every page reload.
+                    See the source code (located at <span style="font-family: monospace;">pt3_survey/index.html</span>) for the code used to randomize which images are displayed to the respondent.
+                </p>
+                <br>
+                <h3>All Survey Gifs</h3>
+                <p class="text-justify">
+                    There are 7 real-life gifs, 9 vr gifs, and 2 synthetic gifs used in the survey.
+                    They are displayed below:
+                </p>
+                <h4>
+                    Real-Life (Drone) Trajectories (7 total)
+                </h4>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/DJI_0_0_637-ff_smooth.gif" width="50%">
+                        <img src="pt3_survey/img/DJI_1_0_753-ff_smooth.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/DJI_10_0_753-ff_smooth.gif" width="50%">
+                        <img src="pt3_survey/img/DJI_2_0_511-ff_smooth.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/DJI_3_0_330-ff_smooth.gif" width="50%">
+                        <img src="pt3_survey/img/DJI_4_0_877-ff_smooth.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/DJI_5_0_510-ff_smooth.gif" width="50%">
+                    </div>
+                <h4>
+                    VR Trajectories (9 total)
+                </h4>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/Town02_Opt-nikita.gif" width="50%">
+                        <img src="pt3_survey/img/Town02_Opt-aaa.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/Town02_Opt-abdul.gif" width="50%">
+                        <img src="pt3_survey/img/Town02_Opt-athena.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/Town02_Opt-divyanshu.gif" width="50%">
+                        <img src="pt3_survey/img/Town02_Opt-lyddie.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/Town02_Opt-manqing.gif" width="50%">
+                        <img src="pt3_survey/img/Town02_Opt-rohan.gif" width="50%">
+                    </div>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/Town02_Opt-xinyi.gif" width="50%">
+                    </div>
+                <h4>
+                    Synthetic Trajectories (2 total)
+                </h4>
+                    <div style="display: flex;">
+                        <img src="pt3_survey/img/DJI_98_0_753-ff_smooth.gif" width="50%">
+                        <img src="pt3_survey/img/DJI_99_0_753-ff_smooth.gif" width="50%">
+                    </div>
+                <br>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
