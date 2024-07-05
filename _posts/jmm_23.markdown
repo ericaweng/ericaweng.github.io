@@ -2,7 +2,7 @@
 layout: post
 title:  "Joint Metrics Matter: A Better Standard for Trajectory Forecasting"
 date:   2023-xx-xx
-image: /tn/images/jmm23.png
+image: /images/jmm23.png
 categories: research
 arxiv: https://arxiv.org/abs/2305.06292
 code: https://github.com/ericaweng/joint-metrics-matter

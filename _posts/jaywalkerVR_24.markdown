@@ -2,7 +2,7 @@
 layout: post
 title:  "JaywalkerVR: A VR System for Collecting Safety-Critical Pedestrian-Vehicle Interactions"
 date:   2024-xx-xx
-image: /tn/images/jaywalkerVR24.png
+image: /images/jaywalkerVR24.png
 categories: research
 arxiv: 
 slides: /_projects/jaywalkerVR/ICRA24_slides.pdf

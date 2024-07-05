@@ -2,10 +2,10 @@
 layout: post
 title:  "Evaluating a VR System for Collecting Safety-Critical Vehicle-Pedestrian Interactions"
 date:   2024-xx-xx
-image: /tn/images/eval24.png
+image: images/eval24.png
 categories: research
 arxiv: https://arxiv.org/abs/2310.05882
-link: /_projects/eval_vr_system/index.html
+link: _projects/eval_vr_system/index.html
 poster: 
 slides: 
 video: 
