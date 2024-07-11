@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real and Fake Survey</title>
+    <style>
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .image-group {
+            border: 1px solid black;
+            margin: 10px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .image-group > div > div {
+            text-align: center;
+        }
+        .header-images {
+            display: flex;
+            justify-content: flex-start;
+            gap: 30px;
+            padding: 5px;
+        }
+        .header-images > div > p {
+            max-width: 550px;
+        }
+        .header-images > div:first-child {
+            margin-left: 20px;  /* Add right margin to the first child */
+        }
+        p {
+            max-width: 1100px;
+        }
+    </style>
+</head>
+<body>
+<h3>Context</h3>
+    <div class="header-images image-group" style="flex-start">
+        <div>
+            <p>This is a schematic of a top-down view of a pedestrian crossing a road. There is also a vehicle on a road.
+            The pedestrian is denoted by a red circle. The vehicle is denoted by a blue rectangle.
+                The black lines show the edges of the road and lane dividers.</p>
+            <img src="img/top-down-sq-schem.png" width="500">
+        </div>
+        <div>
+            <p>This shows the real-world image corresponding to the schematic.</p>
+            <br>
+            <br>
+            <br>
+            <img src="img/top-down-sq.png" width="340px">
+        </div>
+    </div>
+    <h3>Task</h3>
+    <p>Below are three pairs of gifs. Each shows a pedestrian crossing a road.
+        All gifs are in the same style as the schematic.
+        All gifs should be animated and there should be none missing.
+        If any is not animated or not displaying correctly, please do not do the survey and let Erica Weng (eweng@andrew.cmu.edu) know!</p>
+    <p>For each pair: in one gif the <u>pedestrian movement</u> is real, and in the other it is fake.
+        Which is which? Select the radio button for the one you think is real.</p>
+    <p>If you are unsure, please make your best guess based on your own experience
+       as a pedestrian or what you have observed in other pedestrians.</p>
+    </p>
+    <form id="surveyForm" method="post">
+        <div id="container"></div>
+        <div>
+            <br>
+            <label for="explanation"> (Optional) What characteristics did you use to distinguish between real and fake?  </label>
+            <br>
+            <input type="text" id="explanation" name="explanation" style="height:15px; width:500px">
+            <br>
+            <br>
+        </div>
+        <input type="submit" value="Submit" id="submitButton">
+        <span id="warningMessage">Please press "submit" only once, and then wait 3 sec for a success message to appear before re-trying.</span>
+    </form>
+
+    <script>
+        const set1 = [
+            {src: 'img/DJI_0_0_637-ff_smooth.gif', id: 0},
+            {src: 'img/DJI_1_0_753-ff_smooth.gif', id: 1},
+            {src: 'img/DJI_10_0_753-ff_smooth.gif', id: 2},
+            {src: 'img/DJI_2_0_511-ff_smooth.gif', id: 3},
+            {src: 'img/DJI_3_0_330-ff_smooth.gif', id: 4},
+            {src: 'img/DJI_4_0_877-ff_smooth.gif', id: 5},
+            {src: 'img/DJI_5_0_510-ff_smooth.gif', id: 6},
+        ];
+
+        const set2 = [
+            {src: 'img/Town02_Opt-nikita.gif', id: 7},
+            {src: 'img/Town02_Opt-aaa.gif', id: 8},
+            {src: 'img/Town02_Opt-abdul.gif', id: 9},
+            {src: 'img/Town02_Opt-athena.gif', id: 10},
+            {src: 'img/Town02_Opt-divyanshu.gif', id: 11},
+            {src: 'img/Town02_Opt-lyddie.gif', id: 12},
+            {src: 'img/Town02_Opt-manqing.gif', id: 13},
+            {src: 'img/Town02_Opt-rohan.gif', id: 14},
+            {src: 'img/Town02_Opt-xinyi.gif', id: 15},
+        ];
+
+        const set3 = [
+            {src: 'img/DJI_98_0_753-ff_smooth.gif', id: 16},
+            {src: 'img/DJI_99_0_753-ff_smooth.gif', id: 17},
+            {src: 'img/DJI_98_0_753-ff_smooth2.gif', id: 18},
+<!--            {src: 'img/DJI_100_0_753-ff_smooth.gif', id: 18},-->
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffleArray(set3);
+        shuffleArray(set2);
+
+        for (let i = 0; i < 3; i++) {
+            const image1 = set3.pop();
+            const image2 = set2.pop();
+
+            let images = [image1, image2];
+
+            if (Math.random() < 0.1) {
+                const image3 = set1[Math.floor(Math.random() * set1.length)];
+                const replaceIdx = Math.floor(Math.random() * 2);
+                images[replaceIdx] = image3;
+            }
+
+            shuffleArray(images);
+
+            const group = document.createElement('div');
+            group.className = 'image-group';
+            group.innerHTML = `
+                <div>
+<!--                <div><b>ID ${images[0].id}</b></div>-->
+                    <img src="${images[0].src}" width="500">
+                    <div style="text-align: right;">Which one looks more real? <input type="radio" name="group${i}"
+                    value="${images[0].id},${images[1].id},${images[0].id},${images[1].id}">left</div>
+                </div>
+                <div>
+<!--                <div><b>ID ${images[1].id}</b></div>-->
+                    <img src="${images[1].src}" width="500">
+                    <div style="text-align: left;"><input type="radio" name="group${i}"
+                    value="${images[0].id},${images[1].id},${images[1].id},${images[0].id}">right</div>
+                </div>
+            `;
+            document.getElementById('container').appendChild(group);
+        }
+
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          let formData = new FormData(this);
+          let object = {};
+          // Add timestamp as the first element
+          object['timestamp'] = new Date().toISOString();
+          formData.forEach((value, key) => {
+              if (key.substring(0,5) == "group") {
+                  let values = value.split(",");
+                  object[key+"_left"] = values[0];
+                  object[key+"_right"] = values[1];
+                  object[key+"_real"] = values[2];
+                  object[key+"_fake"] = values[3];
+              } else {
+                  object[key] = value;
+              }
+          });
+          console.log(object);
+
+          if(Object.keys(object).length < 13) {
+              const warningMessage = document.getElementById("warningMessage");
+              warningMessage.innerHTML = "Please make sure you have selected a choice for all 3 pairs.";
+              warningMessage.style.color = "red";
+              return;
+          } else {
+              const warningMessage = document.getElementById("warningMessage");
+              warningMessage.innerHTML = "";
+          }
+
+          const deployKey = "AKfycbxkPzldPUSYY_FnVfQTCpAdX31Q9N3fbbqXpZ9kvFsd67WHv6KE3MAaw8Q6r5zQCZ0yrA";
+          fetch('https://script.google.com/macros/s/'+deployKey+'/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(object),
+          })
+          .then(() => {
+              console.log("request complete");
+              const warningMessage = document.getElementById("warningMessage");
+              warningMessage.innerHTML = "Response Submitted! Thanks for taking the survey.";
+              warningMessage.style.color = "green";
+              // Remove the submit button
+              document.getElementById("submitButton").remove();
+          }).catch((error) => console.error('Error:', error));
+        });
+
+    </script>
+</body>
+</html>
