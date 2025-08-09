@@ -166,6 +166,28 @@ input:checked + .slider:before {
   transform: translateX(20px);
 }
 
+/* Toggle wrapper positioning and icons */
+.theme-toggle {
+  position: fixed;
+  top: 50%;
+  right: calc((100vw - 800px) / 2);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 1000;
+}
+
+@media (max-width: 800px) {
+  .theme-toggle {
+    right: 10px;
+  }
+}
+
+.theme-icon {
+  font-size: 16px;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 //@import "highlights";
