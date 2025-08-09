@@ -12,14 +12,26 @@
 /**************/
 /* BASE RULES */
 /**************/
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --link-color: #1772d0;
+  --link-hover-color: #f09228;
+  --highlight-color: #ffffd0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 a {
-  color: #1772d0;
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #f09228;
+  color: var(--link-hover-color);
   text-decoration: none;
 }
 
@@ -96,7 +108,84 @@ h1 {
 }
 
 span.highlight {
-  background-color: #ffffd0;
+  background-color: var(--highlight-color);
+}
+
+/* Dark mode variables */
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --link-color: #9bbcff;
+  --link-hover-color: #f5b75c;
+  --highlight-color: #333a3a;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Toggle wrapper positioning and icons */
+.theme-toggle {
+  position: fixed;
+  top: 50%;
+  right: calc((100vw - 800px) / 2);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 1000;
+}
+
+@media (max-width: 800px) {
+  .theme-toggle {
+    right: 10px;
+  }
+}
+
+.theme-icon {
+  font-size: 16px;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
