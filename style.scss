@@ -169,9 +169,8 @@ input:checked + .slider:before {
 /* Toggle wrapper positioning and icons */
 .theme-toggle {
   position: fixed;
-  top: 50%;
+  top: 20px;
   right: calc((100vw - 800px) / 2);
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 4px;
