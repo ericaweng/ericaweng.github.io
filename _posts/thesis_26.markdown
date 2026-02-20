@@ -2,6 +2,7 @@
 layout: post
 title:  "A Layered Foundation for Reliable Trajectory Forecasting: Data, Evaluation, and Methods"
 date:   2026-02-28
+image: /images/thesis26.png
 categories: research
 pdf: /projects/ri_thesis.pdf
 authors: "<strong>Erica Weng</strong>"
