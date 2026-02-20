@@ -6,6 +6,6 @@ image: /images/thesis26.png
 categories: research
 pdf: /projects/ri_thesis.pdf
 authors: "<strong>Erica Weng</strong>"
-venue: "PhD Thesis, Carnegie Mellon University"
+venue: "PhD Thesis, Carnegie Mellon University, School of Computer Science, Robotics Institute"
 ---
 This thesis argues that reliable trajectory forecasting requires treating data curation, evaluation design, and modeling as co-equal engineering challenges, organized as a layered stack where each layer depends on the soundness of those below it.
