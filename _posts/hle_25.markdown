@@ -2,6 +2,7 @@
 layout: post
 title:  "Humanity's Last Exam"
 date:   2025-01-24
+image: /images/hle25.svg
 categories: research
 arxiv: https://arxiv.org/abs/2501.14249
 authors: "Long Phan, ..., <strong>Erica Weng</strong>, ..., Dan Hendrycks"
